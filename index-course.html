@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML Course | MASUM LEARN</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1020;
+            color: white;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 16, 32, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #252f50;
+        }
+
+        .nav-container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 17px 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #7c8cff;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: white;
+            border: 1px solid #6875f5;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #6875f5;
+        }
+
+
+        /* HERO */
+
+        .course-hero {
+            text-align: center;
+            padding: 80px 20px;
+
+            background:
+                radial-gradient(circle at top left,
+                #27326b 0%,
+                transparent 35%),
+
+                radial-gradient(circle at bottom right,
+                #34205c 0%,
+                transparent 35%);
+        }
+
+        .course-icon {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .course-hero h1 {
+            font-size: clamp(40px, 7vw, 70px);
+        }
+
+        .course-hero h1 span {
+            color: #7c8cff;
+        }
+
+        .course-hero p {
+            color: #b9c0db;
+            max-width: 650px;
+            margin: 15px auto;
+            font-size: 18px;
+        }
+
+
+        /* COURSE LAYOUT */
+
+        .course-layout {
+            max-width: 1150px;
+            margin: auto;
+            padding: 60px 20px;
+
+            display: grid;
+            grid-template-columns: 270px 1fr;
+            gap: 30px;
+        }
+
+
+        /* SIDEBAR */
+
+        .sidebar {
+            background: #121a31;
+            border: 1px solid #252f50;
+            border-radius: 16px;
+            padding: 22px;
+
+            height: fit-content;
+            position: sticky;
+            top: 85px;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 15px;
+            color: #7c8cff;
+        }
+
+        .lesson-btn {
+            width: 100%;
+            display: block;
+
+            padding: 11px;
+            margin: 7px 0;
+
+            background: #18213a;
+            color: #dce1f5;
+
+            border: 1px solid #303b60;
+            border-radius: 8px;
+
+            text-align: left;
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .lesson-btn:hover,
+        .lesson-btn.active {
+            background: #6875f5;
+            color: white;
+        }
+
+
+        /* LESSON */
+
+        .lesson {
+            background: #121a31;
+            border: 1px solid #252f50;
+            border-radius: 18px;
+
+            padding: 35px;
+        }
+
+        .lesson-number {
+            color: #7c8cff;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .lesson h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .lesson h3 {
+            margin-top: 28px;
+            margin-bottom: 10px;
+        }
+
+        .lesson p {
+            color: #c0c6dd;
+            margin-bottom: 15px;
+        }
+
+
+        /* CODE */
+
+        pre {
+            background: #080c18;
+            border: 1px solid #26304d;
+
+            padding: 20px;
+            border-radius: 12px;
+
+            overflow-x: auto;
+            margin: 18px 0;
+
+            color: #dce3ff;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+
+        /* NOTE */
+
+        .note {
+            background: #192443;
+            border-left: 4px solid #6875f5;
+
+            padding: 15px 18px;
+            margin: 20px 0;
+
+            border-radius: 8px;
+        }
+
+
+        /* NAVIGATION BUTTONS */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 35px;
+            padding-top: 25px;
+
+            border-top: 1px solid #293452;
+        }
+
+        .nav-btn {
+            border: none;
+            background: #6875f5;
+            color: white;
+
+            padding: 12px 22px;
+
+            border-radius: 9px;
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px;
+
+            border-top: 1px solid #202944;
+
+            color: #8992b2;
+        }
+
+        footer strong {
+            color: #7c8cff;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .course-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .lesson {
+                padding: 23px;
+            }
+
+            .lesson h2 {
+                font-size: 26px;
+            }
+
+            .course-hero {
+                padding: 60px 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="nav-container">
+
+            <div class="logo">
+                MASUM <span>LEARN</span>
+            </div>
+
+            <a href="index.html" class="back-btn">
+                ← Back
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- COURSE HERO -->
+
+    <div class="course-hero">
+
+        <div class="course-icon">
+            🌐
+        </div>
+
+        <h1>
+            Learn <span>HTML</span>
+        </h1>
+
+        <p>
+            Start your web development journey with HTML.
+            Learn step by step and build your first website.
+        </p>
+
+    </div>
+
+
+
+    <!-- COURSE -->
+
+    <div class="course-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <h3>HTML Course</h3>
+
+            <button class="lesson-btn active"
+                onclick="showLesson(0)">
+                01. What is HTML?
+            </button>
+
+            <button class="lesson-btn"
+                onclick="showLesson(1)">
+                02. HTML Structure
+            </button>
+
+            <button class="lesson-btn"
+                onclick="showLesson(2)">
+                03. Headings & Paragraphs
+            </button>
+
+            <button class="lesson-btn"
+                onclick="showLesson(3)">
+                04. Links & Images
+            </button>
+
+            <button class="lesson-btn"
+                onclick="showLesson(4)">
+                05. Lists
+            </button>
+
+            <button class="lesson-btn"
+                onclick="showLesson(5)">
+                06. Tables
+            </button>
+
+            <button class="lesson-btn"
+                onclick="showLesson(6)">
+                07. Forms
+            </button>
+
+            <button class="lesson-btn"
+                onclick="showLesson(7)">
+                08. Mini Project
+            </button>
+
+        </aside>
+
+
+
+        <!-- LESSON CONTENT -->
+
+        <main class="lesson">
+
+            <div id="lessonContent">
+
+                <!-- LESSON 1 -->
+
+                <div class="lesson-number">
+                    LESSON 01
+                </div>
+
+                <h2>
+                    What is HTML?
+                </h2>
+
+                <p>
+                    HTML stands for HyperText Markup Language.
+                    It is used to create the structure of a webpage.
+                </p>
+
+                <h3>
+                    What can HTML do?
+                </h3>
+
+                <p>
+                    HTML can create headings, paragraphs, images,
+                    links, lists, tables, forms and many other
+                    elements of a website.
+                </p>
+
+                <div class="note">
+                    💡 HTML creates the structure of a website.
+                    CSS makes it beautiful and JavaScript makes
+                    it interactive.
+                </div>
+
+                <h3>
+                    Your First HTML Code
+                </h3>
+
+                <pre><code>&lt;h1&gt;Hello World!&lt;/h1&gt;</code></pre>
+
+                <p>
+                    This code creates a large heading containing
+                    "Hello World!".
+                </p>
+
+            </div>
+
+
+            <!-- PREVIOUS / NEXT -->
+
+            <div class="lesson-navigation">
+
+                <button
+                    class="nav-btn"
+                    id="prevBtn"
+                    onclick="previousLesson()"
+                    disabled>
+                    ← Previous
+                </button>
+
+                <button
+                    class="nav-btn"
+                    id="nextBtn"
+                    onclick="nextLesson()">
+                    Next →
+                </button>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026
+        <strong>MASUM LEARN</strong>
+        — Learn something new every day.
+
+    </footer>
+
+
+
+    <script>
+
+
+        /* LESSON DATA */
+
+        const lessons = [
+
+            {
+
+                title: "What is HTML?",
+
+                content: `
+
+                <div class="lesson-number">
+                    LESSON 01
+                </div>
+
+                <h2>What is HTML?</h2>
+
+                <p>
+                    HTML stands for HyperText Markup Language.
+                    It is used to create the structure of webpages.
+                </p>
+
+                <h3>What can HTML do?</h3>
+
+                <p>
+                    HTML can create headings, paragraphs, images,
+                    links, lists, tables, forms and many other
+                    elements.
+                </p>
+
+                <div class="note">
+                    💡 HTML creates the structure of a website.
+                </div>
+
+                <h3>Your First HTML Code</h3>
+
+                <pre><code>&lt;h1&gt;Hello World!&lt;/h1&gt;</code></pre>
+
+                `
+
+            },
+
+
+            {
+
+                title: "HTML Structure",
+
+                content: `
+
+                <div class="lesson-number">
+                    LESSON 02
+                </div>
+
+                <h2>HTML Structure</h2>
+
+                <p>
+                    Every HTML webpage normally starts with
+                    a basic document structure.
+                </p>
+
+                <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;My Website&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+                <div class="note">
+                    💡 The body contains the content that
+                    visitors see on the webpage.
+                </div>
+
+                `
+
+            },
+
+
+            {
+
+                title: "Headings & Paragraphs",
+
+                content: `
+
+                <div class="lesson-number">
+                    LESSON 03
+                </div>
+
+                <h2>Headings & Paragraphs</h2>
+
+                <p>
+                    HTML provides six levels of headings,
+                    from h1 to h6.
+                </p>
+
+                <pre><code>&lt;h1&gt;Main Heading&lt;/h1&gt;
+
+&lt;h2&gt;Second Heading&lt;/h2&gt;
+
+&lt;h3&gt;Third Heading&lt;/h3&gt;
+
+&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+
+                <h3>Try it yourself</h3>
+
+                <p>
+                    Create an h1 heading with your name
+                    and a paragraph about yourself.
+                </p>
+
+                `
+
+            },
+
+
+            {
+
+                title: "Links & Images",
+
+                content: `
+
+                <div class="lesson-number">
+                    LESSON 04
+                </div>
+
+                <h2>Links & Images</h2>
+
+                <h3>Creating a Link</h3>
+
+                <pre><code>&lt;a href="https://google.com"&gt;
+    Visit Google
+&lt;/a&gt;</code></pre>
+
+                <h3>Adding an Image</h3>
+
+                <pre><code>&lt;img src="image.jpg"
+     alt="My Image"&gt;</code></pre>
+
+                <div class="note">
+                    💡 The alt attribute describes the image
+                    when it cannot be displayed.
+                </div>
+
+                `
+
+            },
+
+
+            {
+
+                title: "Lists",
+
+                content: `
+
+                <div class="lesson-number">
+                    LESSON 05
+                </div>
+
+                <h2>HTML Lists</h2>
+
+                <p>
+                    HTML has ordered and unordered lists.
+                </p>
+
+                <h3>Unordered List</h3>
+
+                <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+                <h3>Ordered List</h3>
+
+                <pre><code>&lt;ol&gt;
+
+    &lt;li&gt;Learn HTML&lt;/li&gt;
+    &lt;li&gt;Learn CSS&lt;/li&gt;
+    &lt;li&gt;Learn JavaScript&lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+                `
+
+            },
+
+
+            {
+
+                title: "Tables",
+
+                content: `
+
+                <div class="lesson-number">
+                    LESSON 06
+                </div>
+
+                <h2>HTML Tables</h2>
+
+                <p>
+                    Tables are useful for displaying
+                    information in rows and columns.
+                </p>
+
+                <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Age&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Masum&lt;/td&gt;
+        &lt;td&gt;22&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+                `
+
+            },
+
+
+            {
+
+                title: "Forms",
+
+                content: `
+
+                <div class="lesson-number">
+                    LESSON 07
+                </div>
+
+                <h2>HTML Forms</h2>
+
+                <p>
+                    Forms allow users to enter information
+                    on a webpage.
+                </p>
+
+                <pre><code>&lt;form&gt;
+
+    &lt;label&gt;Name&lt;/label&gt;
+
+    &lt;input type="text"
+           placeholder="Enter your name"&gt;
+
+    &lt;button&gt;Submit&lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+                <div class="note">
+                    💡 Forms are commonly used for login,
+                    registration, contact and search systems.
+                </div>
+
+                `
+
+            },
+
+
+            {
+
+                title: "Mini Project",
+
+                content: `
+
+                <div class="lesson-number">
+                    LESSON 08
+                </div>
+
+                <h2>🎯 Mini Project</h2>
+
+                <p>
+                    Now let's create a simple personal profile
+                    using everything you have learned.
+                </p>
+
+                <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;My Profile&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Mahfujur Rahman Masum&lt;/h1&gt;
+
+    &lt;p&gt;
+        I am a Computer Science student.
+    &lt;/p&gt;
+
+    &lt;h2&gt;My Skills&lt;/h2&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;HTML&lt;/li&gt;
+        &lt;li&gt;CSS&lt;/li&gt;
+        &lt;li&gt;JavaScript&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;a href="https://github.com"&gt;
+        My GitHub
+    &lt;/a&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+                <div class="note">
+                    🎉 Congratulations!
+                    You have completed the basic HTML course.
+                </div>
+
+                `
+
+            }
+
+        ];
+
+
+        /* CURRENT LESSON */
+
+        let currentLesson = 0;
+
+
+        /* SHOW LESSON */
+
+        function showLesson(index) {
+
+            currentLesson = index;
+
+            document.getElementById("lessonContent").innerHTML =
+                lessons[index].content;
+
+
+            /* SIDEBAR ACTIVE */
+
+            const buttons =
+                document.querySelectorAll(".lesson-btn");
+
+            buttons.forEach(function(button) {
+                button.classList.remove("active");
+            });
+
+            buttons[index].classList.add("active");
+
+
+            /* BUTTON STATE */
+
+            document.getElementById("prevBtn").disabled =
+                index === 0;
+
+            document.getElementById("nextBtn").disabled =
+                index === lessons.length - 1;
+
+
+            /* SCROLL */
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /* NEXT */
+
+        function nextLesson() {
+
+            if (currentLesson < lessons.length - 1) {
+
+                showLesson(currentLesson + 1);
+
+            }
+
+        }
+
+
+        /* PREVIOUS */
+
+        function previousLesson() {
+
+            if (currentLesson > 0) {
+
+                showLesson(currentLesson - 1);
+
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
