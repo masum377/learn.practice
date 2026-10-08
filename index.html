@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MASUM LEARN</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1020;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 16, 32, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #202944;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #7c8cff;
+        }
+
+        .logo span {
+            color: #ffffff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav ul li a {
+            color: #d7dcf5;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #7c8cff;
+        }
+
+        #themeBtn {
+            background: #1b2340;
+            border: none;
+            color: white;
+            padding: 9px 13px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background:
+                radial-gradient(circle at top left, #27326b 0%, transparent 35%),
+                radial-gradient(circle at bottom right, #34205c 0%, transparent 35%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #7c8cff;
+        }
+
+        .hero p {
+            color: #b9c0db;
+            font-size: 20px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            margin: 7px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .primary {
+            background: #6875f5;
+            color: white;
+        }
+
+        .secondary {
+            border: 1px solid #6875f5;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* SECTIONS */
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+        }
+
+        .section-title p {
+            color: #9ba4c4;
+            margin-top: 8px;
+        }
+
+        /* COURSES */
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .course {
+            background: #121a31;
+            border: 1px solid #252f50;
+            padding: 28px;
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .course:hover {
+            transform: translateY(-7px);
+            border-color: #6875f5;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .course-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .course h3 {
+            margin-bottom: 8px;
+            font-size: 22px;
+        }
+
+        .course p {
+            color: #9ba4c4;
+            margin-bottom: 18px;
+        }
+
+        .course button {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 9px;
+            background: #6875f5;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* PROGRESS */
+        .progress-box {
+            background: #121a31;
+            border: 1px solid #252f50;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar {
+            height: 14px;
+            background: #252d49;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 65%;
+            background: linear-gradient(90deg, #6875f5, #9a6cff);
+            border-radius: 20px;
+        }
+
+        /* SEARCH */
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 35px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 18px;
+            background: #121a31;
+            border: 1px solid #303b60;
+            border-radius: 12px;
+            outline: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* QUIZ */
+        .quiz {
+            max-width: 750px;
+            margin: auto;
+            background: #121a31;
+            border: 1px solid #252f50;
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .quiz h3 {
+            margin-bottom: 25px;
+            font-size: 23px;
+        }
+
+        .option {
+            width: 100%;
+            text-align: left;
+            margin: 8px 0;
+            padding: 14px;
+            border: 1px solid #303b60;
+            background: #18213a;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .option:hover {
+            background: #252f55;
+        }
+
+        .option.correct {
+            background: #146c43;
+        }
+
+        .option.wrong {
+            background: #8b2635;
+        }
+
+        #quizResult {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            border-top: 1px solid #202944;
+            color: #8992b2;
+        }
+
+        footer strong {
+            color: #7c8cff;
+        }
+
+        /* LIGHT MODE */
+        body.light {
+            background: #f4f6fb;
+            color: #171a27;
+        }
+
+        body.light nav {
+            background: rgba(255,255,255,0.95);
+            border-color: #ddd;
+        }
+
+        body.light nav ul li a {
+            color: #333;
+        }
+
+        body.light #themeBtn {
+            background: #e7e9f2;
+            color: #222;
+        }
+
+        body.light .hero {
+            background:
+                radial-gradient(circle at top left, #dce2ff, transparent 35%),
+                radial-gradient(circle at bottom right, #eadcff, transparent 35%);
+        }
+
+        body.light .hero p,
+        body.light .section-title p,
+        body.light .course p {
+            color: #626879;
+        }
+
+        body.light .course,
+        body.light .progress-box,
+        body.light .quiz,
+        body.light .search-box input {
+            background: white;
+            border-color: #ddd;
+            color: #171a27;
+        }
+
+        body.light .option {
+            background: #f1f3f8;
+            color: #222;
+            border-color: #ddd;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+            nav ul {
+                display: none;
+            }
+
+            .nav-container {
+                padding: 15px 18px;
+            }
+
+            .courses {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 18px;
+            }
+
+            .hero {
+                min-height: 520px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                MASUM <span>LEARN</span>
+            </div>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#quiz">Practice</a></li>
+            </ul>
+
+            <button id="themeBtn">☀️</button>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <div class="hero" id="home">
+        <div class="hero-content">
+
+            <h1>
+                Learn.
+                <span>Practice.</span>
+                Grow.
+            </h1>
+
+            <p>
+                A simple and interactive learning space for
+                programming, web development and computer science.
+            </p>
+
+            <div class="buttons">
+                <a href="#courses" class="btn primary">
+                    Start Learning
+                </a>
+
+                <a href="#quiz" class="btn secondary">
+                    Try a Quiz
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- COURSES -->
+    <section id="courses">
+
+        <div class="section-title">
+            <h2>Explore Courses</h2>
+            <p>Choose something you want to learn today.</p>
+        </div>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search courses..."
+            >
+        </div>
+
+        <div class="courses" id="courseContainer">
+
+            <div class="course" data-name="HTML">
+                <div class="course-icon">🌐</div>
+                <h3>HTML</h3>
+                <p>
+                    Learn the structure of websites from the beginning.
+                </p>
+                <button onclick="startCourse('HTML')">
+                    Start Course
+                </button>
+            </div>
+
+            <div class="course" data-name="CSS">
+                <div class="course-icon">🎨</div>
+                <h3>CSS</h3>
+                <p>
+                    Create beautiful designs, layouts and animations.
+                </p>
+                <button onclick="startCourse('CSS')">
+                    Start Course
+                </button>
+            </div>
+
+            <div class="course" data-name="JavaScript">
+                <div class="course-icon">⚡</div>
+                <h3>JavaScript</h3>
+                <p>
+                    Make websites interactive and dynamic.
+                </p>
+                <button onclick="startCourse('JavaScript')">
+                    Start Course
+                </button>
+            </div>
+
+            <div class="course" data-name="Python">
+                <div class="course-icon">🐍</div>
+                <h3>Python</h3>
+                <p>
+                    Start programming with an easy and powerful language.
+                </p>
+                <button onclick="startCourse('Python')">
+                    Start Course
+                </button>
+            </div>
+
+            <div class="course" data-name="C Programming">
+                <div class="course-icon">💻</div>
+                <h3>C Programming</h3>
+                <p>
+                    Learn programming fundamentals and problem solving.
+                </p>
+                <button onclick="startCourse('C Programming')">
+                    Start Course
+                </button>
+            </div>
+
+            <div class="course" data-name="Cyber Security">
+                <div class="course-icon">🔐</div>
+                <h3>Cyber Security</h3>
+                <p>
+                    Understand security, networks and basic encryption.
+                </p>
+                <button onclick="startCourse('Cyber Security')">
+                    Start Course
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- PROGRESS -->
+    <section id="progress">
+
+        <div class="section-title">
+            <h2>Your Progress</h2>
+            <p>Keep learning and move forward.</p>
+        </div>
+
+        <div class="progress-box">
+
+            <div class="progress-info">
+                <span>Overall Progress</span>
+                <strong id="progressText">65%</strong>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <p style="margin-top:20px;color:#9ba4c4;">
+                🎯 Keep practicing. Every lesson takes you one step
+                closer to your goal.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- QUIZ -->
+    <section id="quiz">
+
+        <div class="section-title">
+            <h2>Practice Zone</h2>
+            <p>Test your knowledge.</p>
+        </div>
+
+        <div class="quiz">
+
+            <h3 id="question">
+                What does HTML stand for?
+            </h3>
+
+            <button class="option" onclick="checkAnswer(this, false)">
+                A. Hyper Trainer Marking Language
+            </button>
+
+            <button class="option" onclick="checkAnswer(this, true)">
+                B. Hyper Text Markup Language
+            </button>
+
+            <button class="option" onclick="checkAnswer(this, false)">
+                C. High Text Machine Language
+            </button>
+
+            <button class="option" onclick="checkAnswer(this, false)">
+                D. Hyper Tool Multi Language
+            </button>
+
+            <div id="quizResult"></div>
+
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 <strong>MASUM LEARN</strong> — Learn something new every day.
+    </footer>
+
+
+    <script>
+
+        // DARK / LIGHT MODE
+        const themeBtn = document.getElementById("themeBtn");
+
+        themeBtn.addEventListener("click", function() {
+
+            document.body.classList.toggle("light");
+
+            if (document.body.classList.contains("light")) {
+                themeBtn.textContent = "🌙";
+            } else {
+                themeBtn.textContent = "☀️";
+            }
+
+        });
+
+
+        // COURSE BUTTON
+        function startCourse(courseName) {
+
+            alert(
+                "🚀 " +
+                courseName +
+                " course selected!\n\n" +
+                "Your learning journey is starting..."
+            );
+
+            increaseProgress();
+
+        }
+
+
+        // PROGRESS
+        let progress = 65;
+
+        function increaseProgress() {
+
+            if (progress < 100) {
+                progress += 5;
+            }
+
+            document.getElementById("progressFill").style.width =
+                progress + "%";
+
+            document.getElementById("progressText").textContent =
+                progress + "%";
+
+        }
+
+
+        // SEARCH COURSES
+        const searchInput =
+            document.getElementById("searchInput");
+
+        searchInput.addEventListener("input", function() {
+
+            const search =
+                searchInput.value.toLowerCase();
+
+            const courses =
+                document.querySelectorAll(".course");
+
+            courses.forEach(function(course) {
+
+                const name =
+                    course.dataset.name.toLowerCase();
+
+                if (name.includes(search)) {
+                    course.style.display = "block";
+                } else {
+                    course.style.display = "none";
+                }
+
+            });
+
+        });
+
+
+        // QUIZ
+        function checkAnswer(button, correct) {
+
+            const buttons =
+                document.querySelectorAll(".option");
+
+            buttons.forEach(function(btn) {
+                btn.disabled = true;
+            });
+
+            const result =
+                document.getElementById("quizResult");
+
+            if (correct) {
+
+                button.classList.add("correct");
+
+                result.textContent =
+                    "🎉 Correct! Great job!";
+
+                result.style.color = "#42d392";
+
+                increaseProgress();
+
+            } else {
+
+                button.classList.add("wrong");
+
+                result.textContent =
+                    "❌ Not quite. Try again next time!";
+
+                result.style.color = "#ff6874";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
